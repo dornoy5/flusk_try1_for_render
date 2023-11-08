@@ -1,13 +1,18 @@
+import json
 from flask import Flask
-api = Flask(__name__)
+from flask_cors import CORS
 
 
-@api.route('/')
+app = Flask(__name__)
+CORS(app)
+
+
+ar=[{"name":"betty","age":20},{"name":"alex","age":21},{"name":"shadi","age":15}]
+
+
+@app.route('/')
 def hello():
-    return 'Hello, World!'
-
-
-
-
+    return json.dumps( ar)
+ 
 if __name__ == '__main__':
-    api.run(debug=True)
+    app.run(debug=True)
